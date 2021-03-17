@@ -1,13 +1,25 @@
 #!/bin/bash
 
-mkdir -p /tmp/rom # Where to sync source
+MANIFEST=git://github.com/crdroidandroid/android.git
+BRANCH=11.0
+
+mkdir -p /tmp/rom
 cd /tmp/rom
 
 # Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
-repo init -q --no-repo-verify --depth=1 -u git://github.com/AospExtended/manifest.git -b 11.x -g default,-device,-mips,-darwin,-notdefault
-
-# Clone local manifest! So that no need to manually git clone repos or change hals, you can use normal git clone or rm and re clone, they will cost little more time, and you may get timeout! Let's make it quit and depth=1 too.
-git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth 1 -b aex .repo/local_manifests -q
+repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-device,-mips,-darwin,-notdefault
+git config --global user.name ItsVixano
+git config --global user.email vixanonew@gmail.com
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
-repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 -q || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 8 -q
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+
+# Sync stuffs
+cd build/soong && git remote add d https://github.com/SyntatiX-OS/build_soong -f && git cherry-pick 781bd3afedb8891ddbeab6f96555db68ca1a2ad3^..470a3a74636831eb89f3c274897a1483761e9079 && cd ../..
+find hardware/qcom-caf/msm8998/display hardware/qcom-caf/msm8998/audio hardware/qcom-caf/msm8998/media .repo/ -delete
+git clone https://github.com/LineageOS/android_hardware_qcom_display --single-branch -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/display --depth=1
+git clone https://github.com/LineageOS/android_hardware_qcom_audio --single-branch -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/audio --depth=1
+git clone https://github.com/LineageOS/android_hardware_qcom_media --single-branch -b lineage-18.1-caf-msm8998 hardware/qcom-caf/msm8998/media --depth=1
+git clone https://github.com/ItsVixano/android_device_xiaomi_whyred --single-branch -b eleven device/xiaomi/whyred --depth=1
+git clone https://github.com/ItsVixano/android_vendor_xiaomi_whyred --single-branch -b eleven vendor/xiaomi/whyred --depth=1
+git clone https://github.com/SreekanthPalakurthi/kranul --single-branch -b eas kernel/xiaomi/whyred --depth=1 
