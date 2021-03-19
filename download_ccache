@@ -1,11 +1,10 @@
 #!/bin/bash
-sudo apt-get install wget -y
 
-url=https://transfer.sh/1zHCw/ccache.tar.gz
+url=https://cheems.mirrorbomt.workers.dev/ccache.tar.gz
 
 
 cd /tmp # Where to download cccahe
-time wget $url 
+time aria2c $url -x16 -s50
 echo "dl done"
 time tar xf ccache.tar.gz
 echo "unzip done"
