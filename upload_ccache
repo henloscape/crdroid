@@ -10,7 +10,7 @@ com ()
     tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz ccache
 }
 
-time com ccache 1 # Compression level 1, its enough
+time com ccache-crdroid 1 # Compression level 1, its enough
 
 up(){
 	curl --upload-file $1 https://transfer.sh/
