@@ -16,7 +16,7 @@ up(){
 	curl --upload-file $1 https://transfer.sh/
 }
 
-up ccache.tar.gz
+up ccache-crdroid.tar.gz
 
 # mkdir -p ~/.config/rclone
 # echo "$rclone_config" > ~/.config/rclone/rclone.conf # Write rclone config found from env variable, so that cloud storage can be used to upload ccache
