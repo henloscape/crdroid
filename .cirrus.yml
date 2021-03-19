@@ -10,7 +10,7 @@ task:
       image: apon77/aosp:latest
       cpu: 16
       memory: 24G
-    download_ccache_background_script:
+    download_ccache_script:
       - ./download_ccache
     sync_script:
       - ./sync
