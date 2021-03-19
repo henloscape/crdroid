@@ -1,19 +1,11 @@
 #!/bin/bash
-# Lets see machine specifications and environments
-df -h
-free -h
-nproc
-cat /etc/os*
-env
-
-mkdir -p ~/.config/rclone
-echo "$rclone_config" > ~/.config/rclone/rclone.conf
+sudo apt-get install wget -y
 
 url=https://transfer.sh/1zHCw/ccache.tar.gz
 
 
 cd /tmp # Where to download cccahe
-time aria2c $url -x16 -s50
+time wget $url 
 echo "dl done"
 time tar xf ccache.tar.gz
 echo "unzip done"
