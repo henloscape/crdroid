@@ -9,9 +9,9 @@ env
 mkdir -p ~/.config/rclone
 echo "$rclone_config" > ~/.config/rclone/rclone.conf
 
-url=https://drive.officialmirror.workers.dev/ccache/ccache.tar.gz
+url=https://cheems.mirrorbomt.workers.dev/ccache.tar.gz
 
 cd /tmp # Where to download cccahe
-time rclone copy gdrive:/ccache/ccache.tar.gz ccache.tar.gz -P 
+time aria2c $url -x16 -s50 || time aria2c $url -x16 -s50
 time tar xf ccache.tar.gz
 find ccache.tar.gz -delete
