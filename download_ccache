@@ -9,7 +9,8 @@ env
 mkdir -p ~/.config/rclone
 echo "$rclone_config" > ~/.config/rclone/rclone.conf
 
-url=https://cheems.mirrorbomt.workers.dev/ccache.tar.gz
+url=https://transfer.sh/1zHCw/ccache.tar.gz
+
 
 cd /tmp # Where to download cccahe
 time aria2c $url -x16 -s50
