@@ -4,7 +4,7 @@ rm -rf .repo & # lets remove unnecessary things, so that no storage issue can oc
 
 # Normal build steps
 . build/envsetup.sh
-lunch statix_lava-userdebug
+lunch lineage_miatoll-userdebug
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
@@ -25,11 +25,11 @@ make_metalava(){
 
 make_rom(){
 	make bacon -j16
-	zip=$(up out/target/product/lava/*zip)
+	zip=$(up out/target/product/miatoll/*zip)
 	echo " "
 	echo "$zip"
 }
 
 make_metalava
 make_rom &
-sleep 4140 && kill "$!"
+sleep 5200 && kill "$!"
