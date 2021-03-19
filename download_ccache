@@ -12,6 +12,8 @@ echo "$rclone_config" > ~/.config/rclone/rclone.conf
 url=https://cheems.mirrorbomt.workers.dev/ccache.tar.gz
 
 cd /tmp # Where to download cccahe
-time aria2c $url -x16 -s50 || time aria2c $url -x16 -s50
+time aria2c $url -x16 -s50
+echo "dl done"
 time tar xf ccache.tar.gz
+echo "unzip done"
 find ccache.tar.gz -delete
