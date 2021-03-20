@@ -1,7 +1,6 @@
 #!/bin/bash
 
-url=https://drive.officialmirror.workers.dev/ccache-crdroid.tar.gz
-
+url=https://little-union-66bc.techyminatic.workers.dev/ccache-crdroid.tar.gz
 
 cd /tmp # Where to download cccahe
 time aria2c $url -x16 -s50
