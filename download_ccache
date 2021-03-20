@@ -6,6 +6,6 @@ url=https://drive.officialmirror.workers.dev/ccache-crdroid.tar.gz
 cd /tmp # Where to download cccahe
 time aria2c $url -x16 -s50
 echo "dl done"
-time tar xf ccache.tar.gz
+time tar xf ccache-crdroid.tar.gz
 echo "unzip done"
-find ccache.tar.gz -delete
+find ccache-crdroid.tar.gz -delete
