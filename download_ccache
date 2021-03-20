@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url=https://cheems.mirrorbomt.workers.dev/ccache.tar.gz
+url=https://drive.officialmirror.workers.dev/ccache-crdroid.tar.gz
 
 
 cd /tmp # Where to download cccahe
