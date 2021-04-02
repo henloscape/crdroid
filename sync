@@ -19,3 +19,4 @@ git clone https://github.com/JamieHoSzeYui/vendor_xiaomi_sm6250-common vendor/xi
 git clone https://github.com/JamieHoSzeYui/vendor_xiaomi_miatoll vendor/xiaomi/miatoll 
 git clone https://github.com/JamieHoSzeYui/device_xiaomi_miatoll device/xiaomi/miatoll 
 git clone --depth=1 --single-branch https://github.com/ctwoon/Rinka_curtana kernel/xiaomi/sm6250
+
