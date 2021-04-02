@@ -8,7 +8,7 @@ task:
     timeout_in: 120m
     container:
       image: apon77/aosp:latest
-      cpu: 10
+      cpu: 8
       memory: 24G
     download_ccache_script:
       - ./download_ccache
